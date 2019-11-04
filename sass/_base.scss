@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 8px;
+    z-index: 100;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+#root {
+  @extend %wh-full;
+}
+
+.root-container {
+  @extend %wh-full;
+  display: flex;
+  .main-container {
+    @extend %wh-full;
+    padding: 2vmin 4vmin;
+    display: flex;
+  }
+  .content-container {
+    width: 100%;
+    &.with-webex {
+      width: calc(100% - #{$webex-width});
+    }
+  }
+}

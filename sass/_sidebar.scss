@@ -1,0 +1,49 @@
+.sidebar {
+  padding: 0 20px;
+  .timeline-bar {
+    position: absolute;
+    width: 97.5vh;
+    transform: rotate(90deg) translate(50%, 45vmin);
+    z-index: -100;
+  }
+
+  .sidebar-empty {
+    height: 2.75vmin;
+  }
+
+  .card {
+    position: relative;
+    width: calc(14em + 10vmin);
+    height: 5.25vmin;
+    z-index: 1;
+    padding: 0 0 0 6vmin;
+    margin-bottom: 1.5vmin;
+    margin-left: 1vmin;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-width: 2px 4px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+
+    font-size: calc(0.5em + 0.55vmin);
+    color: #757763;
+    background: rgba(255, 255, 255, 1);
+
+    transition: all 0.2s;
+
+    &.over {
+      background: lighten(rgb(116, 191, 75), 10%);
+      color: #757763;
+      cursor: pointer;
+    }
+
+    &.active {
+      background: rgb(0, 188, 235);
+      color: #fafafa;
+      font-weight: 800;
+      transform: scale(1.2) translateX(1vmin);
+      cursor: pointer;
+    }
+  }
+}
