@@ -10,6 +10,10 @@ import ScreensStepFive from "./ScreensStepFive";
 import ScreensStepSix from "./ScreensStepSix";
 import ScreensStepSeven from "./ScreensStepSeven";
 import ScreensStepEight from "./ScreensStepEight";
+import ScreensStepNine from "./ScreensStepNine";
+import ScreensStepTen from "./ScreensStepTen";
+import ScreensStepEleven from "./ScreensStepEleven";
+import ScreensStepTwelve from "./ScreensStepTwelve";
 import { cleanRoom, cleanUser, getUser, getUserData } from "../functions/misc";
 import { StoreContext } from "../context";
 
@@ -22,7 +26,10 @@ const ScreensRoot = () => {
     roomIdStore: [roomId, setRoomId],
     stepStore: [, setStep],
     medicineStore: [, setMedicine],
-    paymentStore: [, setPayment]
+    paymentStore: [, setPayment],
+    statusStore: [, setStatus],
+    timingStore: [, setTiming],
+    messageStore: [, setMessage]
   } = useContext(StoreContext);
 
   const [contentClass, setContentClass] = useState("content-container");
@@ -49,6 +56,9 @@ const ScreensRoot = () => {
         setRoomId(demo.roomId);
         setMedicine(demo.medicine);
         setPayment(demo.payment);
+        setStatus(demo.status);
+        setTiming(demo.timing);
+        setMessage(demo.message);
         setContentClass("content-container with-webex");
         setLoading(false);
       };
@@ -62,7 +72,10 @@ const ScreensRoot = () => {
     setRoomId,
     setStep,
     setMedicine,
-    setPayment
+    setPayment,
+    setStatus,
+    setTiming,
+    setMessage
   ]);
 
   // Ensure CSS for Container when there is Webex
@@ -106,6 +119,18 @@ const ScreensRoot = () => {
             </Route>
             <Route path="/step-8">
               <ScreensStepEight />
+            </Route>
+            <Route path="/step-9">
+              <ScreensStepNine />
+            </Route>
+            <Route path="/step-10">
+              <ScreensStepTen />
+            </Route>
+            <Route path="/step-11">
+              <ScreensStepEleven />
+            </Route>
+            <Route path="/step-12">
+              <ScreensStepTwelve />
             </Route>
           </Switch>
         </div>

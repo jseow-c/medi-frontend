@@ -9,6 +9,7 @@ const ScreensStepOne = () => {
   const [stage, setStage] = useState(0);
   const [image, setImage] = useState("");
   const [facial, setFacial] = useState({});
+
   switch (stage) {
     case 3:
       return <StepOneEnd facial={facial} image={image} />;

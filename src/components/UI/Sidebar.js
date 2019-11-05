@@ -42,7 +42,7 @@ const UISidebar = () => {
     <div className="sidebar">
       <progress
         className="progress is-small timeline-bar"
-        value={nav * 7 - 0.75}
+        value={nav * 7.5 - 0.75}
         max="100"
       ></progress>
       <div className="sidebar-empty"></div>
@@ -55,11 +55,9 @@ const UISidebar = () => {
       <SideButton {...constVar} num={7} name="Escalation To Plastic Surgeon" />
       <SideButton {...constVar} num={8} name="Video Consultation" />
       <SideButton {...constVar} num={9} name="Medicine Recommendation" />
-      <SideButton {...constVar} num={10} name="Pharmacy and Cashier Notified" />
-      <SideButton {...constVar} num={11} name="Pharmacy Issues Medicine" />
-      <SideButton {...constVar} num={12} name="Cashier Processes Payment" />
-      <SideButton {...constVar} num={13} name="Summary of Visit + Archive" />
-      <SideButton {...constVar} num={14} name="Housekeeping" />
+      <SideButton {...constVar} num={10} name="Pharmacy/Cashier Counter" />
+      <SideButton {...constVar} num={11} name="Summary of Visit" />
+      <SideButton {...constVar} num={12} name="Housekeeping" />
     </div>
   );
 };

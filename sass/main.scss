@@ -30,15 +30,10 @@ $input-shadow: none;
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/grid/tiles.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/layout/_all.sass";
-@import "../node_modules/bulma/sass/elements/button.sass";
-@import "../node_modules/bulma/sass/elements/container.sass";
-@import "../node_modules/bulma/sass/elements/title.sass";
-@import "../node_modules/bulma/sass/elements/progress.sass";
-@import "../node_modules/bulma/sass/elements/box.sass";
-@import "../node_modules/bulma/sass/elements/icon.sass";
-@import "../node_modules/bulma/sass/elements/image.sass";
+@import "../node_modules/bulma/sass/elements/_all.sass";
 @import "../node_modules/bulma/sass/form/_all.sass";
 @import "../node_modules/bulma/sass/components/navbar.sass";
 @import "../node_modules/bulma/sass/components/media.sass";
@@ -218,5 +213,23 @@ $input-shadow: none;
   h1 {
     font-size: 1.75em;
     font-weight: 400;
+  }
+}
+
+.medicine-card-list {
+  width: 500px;
+  .box {
+    margin: 10px 0;
+  }
+  h1 {
+    font-size: 1.75em;
+    font-weight: 400;
+  }
+  .med-icon {
+    font-size: 6em;
+    margin-bottom: 0.2em;
+  }
+  p.subtitle {
+    font-size: 0.85em;
   }
 }

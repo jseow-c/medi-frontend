@@ -23,7 +23,10 @@ export const cleanUser = async () => {
     roomId: "",
     step: 0,
     medicine: [],
-    payment: 0
+    payment: 0,
+    status: false,
+    timing: [],
+    message: []
   };
   await axios.post(setPatientUrl, patientData, options);
 };

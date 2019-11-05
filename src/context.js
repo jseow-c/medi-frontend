@@ -11,6 +11,9 @@ export default ({ children }) => {
   const [step, setStep] = useState(0);
   const [medicine, setMedicine] = useState([]);
   const [payment, setPayment] = useState(0);
+  const [status, setStatus] = useState(false);
+  const [timing, setTiming] = useState([]);
+  const [message, setMessage] = useState([]);
 
   const store = {
     loadingStore: [loading, setLoading],
@@ -20,7 +23,10 @@ export default ({ children }) => {
     nameStore: [name, setName],
     stepStore: [step, setStep],
     medicineStore: [medicine, setMedicine],
-    paymentStore: [payment, setPayment]
+    paymentStore: [payment, setPayment],
+    statusStore: [status, setStatus],
+    timingStore: [timing, setTiming],
+    messageStore: [message, setMessage]
   };
 
   return (
