@@ -52,10 +52,10 @@ const ScreensStepTwo = () => {
         };
         await axios.post(memberUrl, memberData, options);
         setTimeout(() => {
-          setButtonClass("button is-success is-light is-rounded next-button");
+          setButtonClass(classObj.button.show);
         }, 1000);
       };
-      setContentClass("step-two-content");
+      setContentClass(classObj.content.show);
       setTimeout(() => {
         setChosen(nurseChosen);
         putInNurse();

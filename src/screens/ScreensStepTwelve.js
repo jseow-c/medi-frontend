@@ -1,20 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import UIMedicine from "../components/UI/Medicine/Medicine";
 import { setDemoStep } from "../functions/misc";
 import { StoreContext } from "../context";
-
-const medicine = [
-  {
-    name: "Bacitracin",
-    icon: "fas fa-capsules",
-    desc: "prevents minor skin infections caused by small cuts"
-  },
-  {
-    name: "Neosporin",
-    icon: "fas fa-prescription-bottle-alt",
-    desc: "contains neomycin and polymyxin"
-  }
-];
+import axios from "axios";
 
 const classObj = {
   content: {
@@ -30,6 +17,7 @@ const classObj = {
 const ScreensStepTwelve = () => {
   const {
     stepStore: [step, setStep],
+    messageStore: [message, setMessage],
     roomStore: [room]
   } = useContext(StoreContext);
   const execute = step < 12;
@@ -39,19 +27,35 @@ const ScreensStepTwelve = () => {
   useEffect(() => {
     if (execute) {
       setContentClass("step-two-content");
-      setStep(12);
-      setDemoStep(12);
     }
-  }, [execute, setStep, room]);
+  }, [execute]);
   return (
     <div className={contentClass}>
       <div className="generic-text-box h-150">
-        <h1>Issue Medicine using Bot</h1>
+        <h1>Destroy Conversation...</h1>
         <p style={{ margin: "25px 0" }}>
-          Type <i>@drstrange issue med</i> to issue medicine to the people.
+          It is sad to say good-bye. But let's end the demo with a bang!
         </p>
       </div>
-      <UIMedicine title="Issuing Medicine" medicine={medicine} />
+      <div>
+        <i
+          class="fas fa-bomb has-text-danger"
+          style={{ fontSize: "40vmin", cursor: "pointer" }}
+          onClick={async () => {
+            // const roomUrl = `${process.env.REACT_APP_SERVER_IP}/webex/room`;
+            // const roomData = { title };
+            // const roomRes = await axios.post(roomUrl, roomData, options);
+            const roomUrl = `${process.env.REACT_APP_SERVER_IP}/webex/room`;
+            const options = {
+              headers: { "Content-Type": "application/json" },
+              data: { title: room }
+            };
+            await axios.delete(roomUrl, options);
+            setStep(12);
+            setDemoStep(12);
+          }}
+        ></i>
+      </div>
     </div>
   );
 };

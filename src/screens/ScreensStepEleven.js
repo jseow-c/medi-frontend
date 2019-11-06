@@ -1,19 +1,41 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UIMedicine from "../components/UI/Medicine/Medicine";
+import UITimeline from "../components/UI/Timeline/Timeline";
 import { setDemoStep } from "../functions/misc";
 import { StoreContext } from "../context";
 
-const medicine = [
+import axios from "axios";
+
+const timeline = [
   {
-    name: "Bacitracin",
-    icon: "fas fa-capsules",
-    desc: "prevents minor skin infections caused by small cuts"
+    title: "Registration",
+    desc: "Patient registered with facial recognition.",
+    firstStep: 0,
+    lastStep: 1
   },
   {
-    name: "Neosporin",
-    icon: "fas fa-prescription-bottle-alt",
-    desc: "contains neomycin and polymyxin"
+    title: "Triage Nurse",
+    desc: "Triage Nurse collected vitals and other information from patient.",
+    firstStep: 1,
+    lastStep: 3
+  },
+  {
+    title: "Doctor",
+    desc: "Doctor used given information to try to diagnose patient.",
+    firstStep: 4,
+    lastStep: 8
+  },
+  {
+    title: "Video Call",
+    desc: "Doctor made a video conference with a specialist.",
+    firstStep: 8,
+    lastStep: 9
+  },
+  {
+    title: "Pharmacy",
+    desc: "Pharmacy helped to issue medicine and collected payment.",
+    firstStep: 9,
+    lastStep: 10
   }
 ];
 
@@ -31,6 +53,7 @@ const classObj = {
 const ScreensStepEleven = () => {
   const {
     stepStore: [step, setStep],
+    timingStore: [timing, setTiming],
     roomStore: [room]
   } = useContext(StoreContext);
   const execute = step < 11;
@@ -43,21 +66,24 @@ const ScreensStepEleven = () => {
   const history = useHistory();
   useEffect(() => {
     if (execute) {
-      setContentClass("step-two-content");
-      setButtonClass("button is-success is-light is-rounded next-button");
+      const getTiming = async () => {
+        const url = `${process.env.REACT_APP_SERVER_IP}/demo/timing`;
+        const response = await axios.get(url);
+        setTiming(response.data);
+        setTimeout(() => {
+          setContentClass(classObj.content.show);
+          setButtonClass(classObj.button.show);
+        }, 1000);
+      };
+      getTiming();
       setStep(11);
       setDemoStep(11);
     }
-  }, [execute, setStep, room]);
+  }, [execute, setStep, setTiming, room]);
   return (
     <div className={contentClass}>
-      <div className="generic-text-box h-150">
-        <h1>Issue Medicine using Bot</h1>
-        <p style={{ margin: "25px 0" }}>
-          Type <i>@drstrange issue med</i> to issue medicine to the people.
-        </p>
-      </div>
-      <UIMedicine title="Issuing Medicine" medicine={medicine} />
+      <h1>Timeline</h1>
+      <UITimeline timeline={timeline} timing={timing} />
       <button className={buttonClass} onClick={() => history.push("/step-12")}>
         Next
       </button>
