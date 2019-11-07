@@ -17,13 +17,13 @@ const UITimelineBlock = ({ title, desc, firstStep, lastStep, timing }) => {
   const durSecs = Math.round(duration % 60);
 
   return (
-    <div class="timeline__box">
-      <div class="timeline__date">
-        <span class="timeline__day">{timeHours}</span>
-        <span class="timeline__month">{timeSecs} sec</span>
+    <div className="timeline__box">
+      <div className="timeline__date">
+        <span className="timeline__day">{timeHours}</span>
+        <span className="timeline__month">{timeSecs} sec</span>
       </div>
-      <div class="timeline__post">
-        <div class="timeline__content">
+      <div className="timeline__post">
+        <div className="timeline__content">
           <h2>{title}</h2>
           <p>
             Duration: {durMins > 0 && `${durMins}min `}

@@ -24,14 +24,13 @@ const UIWebex = () => {
     muteNotifications: true
   });
   useEffect(() => {
-    if (roomId) {
-      setSpaceProps(space => {
-        return { ...space, destinationId: roomId };
-      });
-    }
+    setSpaceProps(space => {
+      return { ...space, destinationId: roomId };
+    });
   }, [roomId]);
   useEffect(() => {
     if (spaceProps.destinationId) setDisplay(true);
+    else setDisplay(false);
   }, [spaceProps.destinationId]);
   return (
     <div

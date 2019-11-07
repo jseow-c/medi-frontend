@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { setDemoStep } from "../functions/misc";
 import { StoreContext } from "../context";
 import axios from "axios";
+import StepTwelveInitial from "../components/StepTwelve/Initial";
+import StepTwelveBackup from "../components/StepTwelve/Backup";
+import StepTwelveDestroy from "../components/StepTwelve/Destroy";
 
 const classObj = {
   content: {
@@ -17,9 +21,11 @@ const classObj = {
 const ScreensStepTwelve = () => {
   const {
     stepStore: [step, setStep],
-    messageStore: [message, setMessage],
+    messageStore: [, setMessage],
     roomStore: [room]
   } = useContext(StoreContext);
+  const [stage, setStage] = useState(0);
+  const history = useHistory();
   const execute = step < 12;
   const [contentClass, setContentClass] = useState(
     execute ? classObj.content.hide : classObj.content.show
@@ -29,33 +35,27 @@ const ScreensStepTwelve = () => {
       setContentClass("step-two-content");
     }
   }, [execute]);
+  const bombClick = async () => {
+    setStage(1);
+    const messageUrl = `${process.env.REACT_APP_SERVER_IP}/demo/message`;
+    const response = await axios.post(messageUrl);
+    setMessage(response.data);
+    setStage(2);
+    const roomUrl = `${process.env.REACT_APP_SERVER_IP}/webex/room`;
+    const options = {
+      headers: { "Content-Type": "application/json" },
+      data: { title: room }
+    };
+    await axios.delete(roomUrl, options);
+    setStep(12);
+    setDemoStep(12);
+    setTimeout(() => history.push("/end"), 2000);
+  };
   return (
     <div className={contentClass}>
-      <div className="generic-text-box h-150">
-        <h1>Destroy Conversation...</h1>
-        <p style={{ margin: "25px 0" }}>
-          It is sad to say good-bye. But let's end the demo with a bang!
-        </p>
-      </div>
-      <div>
-        <i
-          class="fas fa-bomb has-text-danger"
-          style={{ fontSize: "40vmin", cursor: "pointer" }}
-          onClick={async () => {
-            // const roomUrl = `${process.env.REACT_APP_SERVER_IP}/webex/room`;
-            // const roomData = { title };
-            // const roomRes = await axios.post(roomUrl, roomData, options);
-            const roomUrl = `${process.env.REACT_APP_SERVER_IP}/webex/room`;
-            const options = {
-              headers: { "Content-Type": "application/json" },
-              data: { title: room }
-            };
-            await axios.delete(roomUrl, options);
-            setStep(12);
-            setDemoStep(12);
-          }}
-        ></i>
-      </div>
+      {stage === 0 && <StepTwelveInitial bombClick={bombClick} />}
+      {stage === 1 && <StepTwelveBackup />}
+      {stage === 2 && <StepTwelveDestroy />}
     </div>
   );
 };

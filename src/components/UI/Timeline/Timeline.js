@@ -3,8 +3,8 @@ import UITimelineBlock from "./Block";
 
 const UITimeline = ({ timeline, timing }) => {
   return (
-    <div class="page">
-      <div class="timeline">
+    <div className="page">
+      <div className="timeline">
         {timeline.map(tme => (
           <UITimelineBlock {...tme} timing={timing} key={tme.title} />
         ))}

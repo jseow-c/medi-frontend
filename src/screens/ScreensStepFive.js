@@ -37,7 +37,7 @@ const ScreensStepFive = () => {
   }, [execute, setStep]);
   return (
     <div className={contentClass}>
-      <div className="generic-text-box">
+      <div className="generic-text-box" style={{ height: "24vmin" }}>
         <h1>@Bot Time</h1>
         <p style={{ marginTop: 50 }}>
           Time to test using the bot! Let's try some commands to draw out the
@@ -47,6 +47,10 @@ const ScreensStepFive = () => {
           Type <i>@drstrange info</i> to get the patient's information.
         </p>
       </div>
+      <i
+        className="fas fa-robot has-text-grey"
+        style={{ fontSize: "25vmin", marginBottom: "5vmin" }}
+      ></i>
       <button className={buttonClass} onClick={() => history.push("/step-6")}>
         Next
       </button>

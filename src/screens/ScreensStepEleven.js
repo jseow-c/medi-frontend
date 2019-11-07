@@ -56,6 +56,7 @@ const ScreensStepEleven = () => {
     timingStore: [timing, setTiming],
     roomStore: [room]
   } = useContext(StoreContext);
+  const [loading, setLoading] = useState(true);
   const execute = step < 11;
   const [contentClass, setContentClass] = useState(
     execute ? classObj.content.hide : classObj.content.show
@@ -70,20 +71,23 @@ const ScreensStepEleven = () => {
         const url = `${process.env.REACT_APP_SERVER_IP}/demo/timing`;
         const response = await axios.get(url);
         setTiming(response.data);
-        setTimeout(() => {
-          setContentClass(classObj.content.show);
-          setButtonClass(classObj.button.show);
-        }, 1000);
       };
       getTiming();
       setStep(11);
       setDemoStep(11);
     }
   }, [execute, setStep, setTiming, room]);
+  useEffect(() => {
+    if (timing.length > 10) {
+      setLoading(false);
+      setContentClass(classObj.content.show);
+      setButtonClass(classObj.button.show);
+    }
+  }, [timing]);
   return (
     <div className={contentClass}>
       <h1>Timeline</h1>
-      <UITimeline timeline={timeline} timing={timing} />
+      {!loading && <UITimeline timeline={timeline} timing={timing} />}
       <button className={buttonClass} onClick={() => history.push("/step-12")}>
         Next
       </button>

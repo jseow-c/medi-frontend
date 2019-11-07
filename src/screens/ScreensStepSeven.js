@@ -7,7 +7,6 @@ import { StoreContext } from "../context";
 const doctors = [
   { name: "Chun Kun", num: 1 },
   { name: "Lily Ada", num: 1 },
-  { name: "Steve Job", num: 0 },
   { name: "Sebastian Ma", num: 0 },
   { name: "Elon Musk", num: 0 }
 ];

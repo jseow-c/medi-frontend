@@ -65,7 +65,7 @@ const ScreensStepTen = () => {
       setStep(10);
       setDemoStep(10);
     }
-  }, [execute, setStep, room]);
+  }, [execute, room, setStep]);
   return (
     <div className={contentClass}>
       <div className="generic-text-box h-150">

@@ -14,6 +14,7 @@ import ScreensStepNine from "./ScreensStepNine";
 import ScreensStepTen from "./ScreensStepTen";
 import ScreensStepEleven from "./ScreensStepEleven";
 import ScreensStepTwelve from "./ScreensStepTwelve";
+import ScreensEnd from "./ScreensEnd";
 import { cleanRoom, cleanUser, getUser, getUserData } from "../functions/misc";
 import { StoreContext } from "../context";
 
@@ -131,6 +132,9 @@ const ScreensRoot = () => {
             </Route>
             <Route path="/step-12">
               <ScreensStepTwelve />
+            </Route>
+            <Route path="/end">
+              <ScreensEnd />
             </Route>
           </Switch>
         </div>

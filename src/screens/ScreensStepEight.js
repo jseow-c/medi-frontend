@@ -37,7 +37,7 @@ const ScreensStepEight = () => {
   }, [execute, setStep]);
   return (
     <div className={contentClass}>
-      <div className="generic-text-box">
+      <div className="generic-text-box" style={{ height: "28vmin" }}>
         <h1>Ask the Plastic Surgeon over Video!</h1>
         <p style={{ marginTop: 50 }}>
           Often times, the injury is hard to determine simply via a photo. It
@@ -49,6 +49,10 @@ const ScreensStepEight = () => {
           Surgeon
         </p>
       </div>
+      <i
+        className="fas fa-video has-text-grey"
+        style={{ fontSize: "25vmin", marginBottom: "5vmin" }}
+      ></i>
       <button className={buttonClass} onClick={() => history.push("/step-9")}>
         Next
       </button>
