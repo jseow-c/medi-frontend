@@ -37,7 +37,7 @@ const ScreensStepEight = () => {
   }, [execute, setStep]);
   return (
     <div className={contentClass}>
-      <div className="generic-text-box" style={{ height: "28vmin" }}>
+      <div className="generic-text-box h-250">
         <h1>Ask the Plastic Surgeon over Video!</h1>
         <p style={{ marginTop: 50 }}>
           Often times, the injury is hard to determine simply via a photo. It

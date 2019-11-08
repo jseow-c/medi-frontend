@@ -37,7 +37,7 @@ const ScreensStepFive = () => {
   }, [execute, setStep]);
   return (
     <div className={contentClass}>
-      <div className="generic-text-box" style={{ height: "24vmin" }}>
+      <div className="generic-text-box h-250">
         <h1>@Bot Time</h1>
         <p style={{ marginTop: 50 }}>
           Time to test using the bot! Let's try some commands to draw out the

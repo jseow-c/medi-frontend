@@ -39,6 +39,9 @@ body {
   }
   .content-container {
     width: 100%;
+    background: hsl(0, 0%, 29%);
+    margin-left: 15px;
+    color: hsl(0, 0%, 86%);
     &.with-webex {
       width: calc(100% - #{$webex-width});
     }

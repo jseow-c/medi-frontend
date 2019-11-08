@@ -1,17 +1,19 @@
 import axios from "axios";
 
 export const cleanRoom = async () => {
-  const title = sessionStorage.getItem("room");
-  const titleString = `${title}`;
-  if (title && titleString !== "null" && titleString !== "undefined") {
-    sessionStorage.removeItem("room");
-    const roomUrl = `${process.env.REACT_APP_SERVER_IP}/webex/room`;
-    const options = {
-      headers: { "Content-Type": "application/json" },
-      data: { title }
-    };
-    await axios.delete(roomUrl, options);
-  }
+  const url = `${process.env.REACT_APP_SERVER_IP}/demo/room/clear/all`;
+  await axios.post(url);
+  // const title = sessionStorage.getItem("room");
+  // const titleString = `${title}`;
+  // if (title && titleString !== "null" && titleString !== "undefined") {
+  //   sessionStorage.removeItem("room");
+  //   const roomUrl = `${process.env.REACT_APP_SERVER_IP}/webex/room`;
+  //   const options = {
+  //     headers: { "Content-Type": "application/json" },
+  //     data: { title }
+  //   };
+  //   await axios.delete(roomUrl, options);
+  // }
 };
 
 export const cleanUser = async () => {

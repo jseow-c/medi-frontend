@@ -25,8 +25,10 @@ const UIMessage = ({ message }) => {
       className="message-body"
       dangerouslySetInnerHTML={createMarkup(message.html)}
     />
-  ) : (
+  ) : Object.keys(message).includes("text") ? (
     <div className="message-body">{formatText(message.text)}</div>
+  ) : (
+    <div className="message-body"> ** File uploaded ** </div>
   );
   return (
     <article className="message is-dark w-100">

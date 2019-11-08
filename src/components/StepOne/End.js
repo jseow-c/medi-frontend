@@ -80,7 +80,13 @@ const StepOneEnd = ({ facial, image }) => {
       </button>
     </div>
   ) : (
-    <div className="step-one-loader">{facial.person_name}</div>
+    <div className="step-one-loader vertical">
+      <div className="title">Intercorp presents</div>
+      <div className="person">{facial.person_name}</div>
+      <div className="confidence">
+        Confidence Level {Math.round(facial.confidence * 100)}%
+      </div>
+    </div>
   );
 };
 

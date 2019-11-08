@@ -37,7 +37,7 @@ const ScreensStepSix = () => {
   }, [execute, setStep]);
   return (
     <div className={contentClass}>
-      <div className="generic-text-box" style={{ height: "26vmin" }}>
+      <div className="generic-text-box h-250">
         <h1>Take a picture of the injury using Webex!</h1>
         <p style={{ marginTop: 50 }}>
           We often find injuries that are visual such as cuts or wounds. We want

@@ -50,6 +50,7 @@ const UILoading = ({
           y="50"
           style={{
             fontSize: `calc(0.7em + ${size * 0.08}em)`,
+            fill: "#fafafa",
             fontWeight: 100
           }}
         >
@@ -60,7 +61,10 @@ const UILoading = ({
           textAnchor="middle"
           x="50"
           y="60"
-          style={{ fontSize: `calc(0.325em + ${size * 0.02}em)` }}
+          style={{
+            fill: "#fafafa",
+            fontSize: `calc(0.325em + ${size * 0.02}em)`
+          }}
         >
           {desc}
         </text>
