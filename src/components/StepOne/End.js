@@ -33,7 +33,7 @@ const StepOneEnd = ({ facial, image }) => {
         const memberUrl = `${process.env.REACT_APP_SERVER_IP}/webex/membership`;
         const memberData = {
           title,
-          email: "jseow@cisco.com"
+          email: sessionStorage.getItem("email")
         };
         await axios.post(memberUrl, memberData, options);
 

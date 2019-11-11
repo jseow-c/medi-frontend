@@ -10,7 +10,7 @@ const UIWebex = () => {
     roomIdStore: [roomId]
   } = useContext(StoreContext);
   const [spaceProps, setSpaceProps] = useState({
-    accessToken: process.env.REACT_APP_WEBEX_ADMIN_TOKEN,
+    accessToken: sessionStorage.getItem("token"), // process.env.REACT_APP_WEBEX_ADMIN_TOKEN,
     destinationType: destinationTypes.SPACEID,
     destinationId: roomId,
     activities: {
@@ -25,7 +25,11 @@ const UIWebex = () => {
   });
   useEffect(() => {
     setSpaceProps(space => {
-      return { ...space, destinationId: roomId };
+      return {
+        ...space,
+        destinationId: roomId,
+        accessToken: sessionStorage.getItem("token")
+      };
     });
   }, [roomId]);
   useEffect(() => {

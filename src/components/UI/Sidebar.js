@@ -8,7 +8,7 @@ const useNav = origin => {
 
   // set the navigation
   useEffect(() => {
-    if (location.pathname === "/") setNav(1);
+    if (location.pathname === "/") setNav(0);
     else if (location.pathname.indexOf("/step-") >= 0) {
       const newNav = parseInt(location.pathname.split("/step-")[1], 10);
       setNav(newNav);
@@ -32,7 +32,7 @@ const SideButton = ({ history, nav, step, name, num }) => {
 };
 
 const UISidebar = () => {
-  const nav = useNav(1);
+  const nav = useNav(0);
   const {
     stepStore: [step]
   } = useContext(StoreContext);
@@ -42,7 +42,7 @@ const UISidebar = () => {
     <div className="sidebar">
       <progress
         className="progress is-small timeline-bar"
-        value={nav * 7.5 - 0.75}
+        value={nav * 7.25 + 3.5}
         max="100"
       ></progress>
       <div className="sidebar-empty"></div>
