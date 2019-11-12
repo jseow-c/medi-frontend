@@ -1,4 +1,6 @@
 import axios from "axios";
+import { Route, Redirect } from "react-router-dom";
+import React from "react";
 
 export const cleanRoom = async () => {
   const url = `${process.env.REACT_APP_SERVER_IP}/demo/room/clear/all`;
@@ -57,4 +59,24 @@ export const setDemoStep = async step => {
   const infoData = { step };
   const infoRes = await axios.post(infoUrl, infoData, options);
   return infoRes.data;
+};
+
+export const PrivateRoute = ({ children, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        sessionStorage.getItem("token") ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
+  );
 };

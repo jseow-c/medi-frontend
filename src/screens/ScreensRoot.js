@@ -16,7 +16,13 @@ import ScreensStepEleven from "./ScreensStepEleven";
 import ScreensStepTwelve from "./ScreensStepTwelve";
 import ScreensEnd from "./ScreensEnd";
 import ScreensZero from "./ScreensZero";
-import { cleanRoom, cleanUser, getUser, getUserData } from "../functions/misc";
+import {
+  cleanRoom,
+  cleanUser,
+  getUser,
+  getUserData,
+  PrivateRoute
+} from "../functions/misc";
 import { StoreContext } from "../context";
 
 const ScreensRoot = () => {
@@ -106,45 +112,45 @@ const ScreensRoot = () => {
             <Route exact path="/">
               <ScreensZero />
             </Route>
-            <Route path="/step-1">
+            <PrivateRoute path="/step-1">
               <ScreensStepOne />
-            </Route>
-            <Route path="/step-2">
+            </PrivateRoute>
+            <PrivateRoute path="/step-2">
               <ScreensStepTwo />
-            </Route>
-            <Route path="/step-3">
+            </PrivateRoute>
+            <PrivateRoute path="/step-3">
               <ScreensStepThree />
-            </Route>
-            <Route path="/step-4">
+            </PrivateRoute>
+            <PrivateRoute path="/step-4">
               <ScreensStepFour />
-            </Route>
-            <Route path="/step-5">
+            </PrivateRoute>
+            <PrivateRoute path="/step-5">
               <ScreensStepFive />
-            </Route>
-            <Route path="/step-6">
+            </PrivateRoute>
+            <PrivateRoute path="/step-6">
               <ScreensStepSix />
-            </Route>
-            <Route path="/step-7">
+            </PrivateRoute>
+            <PrivateRoute path="/step-7">
               <ScreensStepSeven />
-            </Route>
-            <Route path="/step-8">
+            </PrivateRoute>
+            <PrivateRoute path="/step-8">
               <ScreensStepEight />
-            </Route>
-            <Route path="/step-9">
+            </PrivateRoute>
+            <PrivateRoute path="/step-9">
               <ScreensStepNine />
-            </Route>
-            <Route path="/step-10">
+            </PrivateRoute>
+            <PrivateRoute path="/step-10">
               <ScreensStepTen />
-            </Route>
-            <Route path="/step-11">
+            </PrivateRoute>
+            <PrivateRoute path="/step-11">
               <ScreensStepEleven />
-            </Route>
-            <Route path="/step-12">
+            </PrivateRoute>
+            <PrivateRoute path="/step-12">
               <ScreensStepTwelve />
-            </Route>
-            <Route path="/end">
+            </PrivateRoute>
+            <PrivateRoute path="/end">
               <ScreensEnd />
-            </Route>
+            </PrivateRoute>
           </Switch>
         </div>
       </div>
