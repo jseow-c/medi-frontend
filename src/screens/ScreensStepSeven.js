@@ -5,12 +5,37 @@ import { setDemoStep } from "../functions/misc";
 import { StoreContext } from "../context";
 
 const doctors = [
-  { name: "Chun Kun", num: 1 },
-  { name: "Lily Ada", num: 1 },
-  { name: "Sebastian Ma", num: 0 },
-  { name: "Elon Musk", num: 0 }
+  {
+    name: "Goh Yong Kian",
+    photo:
+      "https://pbs.twimg.com/profile_images/790582305064648704/ty5Armt_.jpg",
+    status: "Available",
+    title: "Consultant",
+    specialization: "Plastic Surgeon",
+    workdays: ["Tue", "Wed", "Fri", "Sat", "Sun"],
+    shift: "7am - 6pm"
+  },
+  {
+    name: "Joyce Lim",
+    photo: "https://randomuser.me/api/portraits/women/8.jpg",
+    status: "Busy",
+    title: "Consultant",
+    specialization: "Plastic Surgeon",
+    workdays: ["Mon", "Tue", "Thurs", "Fri", "Sun"],
+    shift: "3pm - 10pm"
+  },
+  {
+    name: "Ganesh S/O Sundaram",
+    photo: "https://randomuser.me/api/portraits/men/95.jpg",
+    status: "Off-Shift",
+    title: "Senior Consultant",
+    specialization: "Plastic Surgeon",
+    workdays: ["Mon", "Tue", "Thurs", "Fri", "Sun"],
+    shift: "7am - 6pm"
+  }
 ];
-const doctorChosen = "Sebastian Ma";
+
+const doctorChosen = "Goh Yong Kian";
 
 const classObj = {
   content: {

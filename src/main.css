@@ -5051,18 +5051,22 @@ body {
 .step-one-initial-container {
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0); }
   .step-one-initial-container .step-one-initial {
-    width: 60%;
-    cursor: pointer;
-    transition: all 0.2s; }
+    width: 100%; }
     .step-one-initial-container .step-one-initial .step-one-initial-hero {
       padding-left: 5rem;
       padding-right: 5rem; }
-    .step-one-initial-container .step-one-initial:hover {
-      transform: scale(1.02);
-      background-color: #d0d1cd;
-      box-shadow: 0.1em 0.1em 0.7em 0.2em rgba(208, 209, 205, 0.8); }
+      .step-one-initial-container .step-one-initial .step-one-initial-hero .title-logo {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 15px; }
+      .step-one-initial-container .step-one-initial .step-one-initial-hero .title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: whitesmoke; }
+      .step-one-initial-container .step-one-initial .step-one-initial-hero .subtitle {
+        font-size: 1rem; }
 
 .roster-card-list {
   width: 500px; }
@@ -5114,6 +5118,9 @@ body {
     .vital-container .vital-card .vital-title {
       font-size: 0.9em;
       margin-bottom: 10px; }
+      .vital-container .vital-card .vital-title .vital-icon {
+        font-size: 4em;
+        margin-bottom: 5px; }
     .vital-container .vital-card .vital-value {
       font-size: 2.75em;
       transition: all 0.75s ease-in-out; }
@@ -5244,6 +5251,12 @@ body {
     font-size: 0.85em; }
   .medicine-card-list article.tile {
     transition: all 1s ease-in-out; }
+
+.avatar-image {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center; }
 
 .page {
   width: 90%;

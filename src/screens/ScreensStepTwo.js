@@ -7,14 +7,50 @@ import { StoreContext } from "../context";
 import axios from "axios";
 
 const nurses = [
-  { name: "Chun Kun", num: 1 },
-  { name: "Choon Hon Goh", num: 0 },
-  { name: "Lily Ada", num: 1 },
-  { name: "Steve Job", num: 0 },
-  { name: "Elon Musk", num: 0 }
+  {
+    name: "Chun Kun",
+    photo: "https://i.imgur.com/sgeHfTT.jpg",
+    status: "Off-Shift",
+    title: "Senior Staff Nurse 1",
+    workdays: ["Mon", "Tue", "Wed", "Thurs", "Sun"],
+    shift: "3pm - 10pm"
+  },
+  {
+    name: "Emily Tan",
+    photo: "https://randomuser.me/api/portraits/women/17.jpg",
+    status: "Available",
+    title: "Senior Staff Nurse 2",
+    workdays: ["Tue", "Wed", "Fri", "Sat", "Sun"],
+    shift: "7am - 6pm"
+  },
+  {
+    name: "Lily Ada",
+    photo: "https://i.imgur.com/kJCWUAo.jpg",
+    status: "Busy",
+    title: "Staff Nurse",
+    workdays: ["Mon", "Tue", "Thurs", "Fri", "Sun"],
+    shift: "3pm - 10pm"
+  },
+  {
+    name: "Steve Goh Ching Lek",
+    photo:
+      "https://pbs.twimg.com/profile_images/931120694137679872/fyXUlj0e.jpg",
+    status: "Off-Shift",
+    title: "Staff Nurse",
+    workdays: ["Tue", "Wed", "Thurs", "Sat", "Sun"],
+    shift: "3pm - 10pm"
+  },
+  {
+    name: "Maria de Souza",
+    photo: "https://i.imgur.com/kcPMLNS.jpg",
+    status: "Available",
+    title: "Senior Staff Nurse 1",
+    workdays: ["Mon", "Tue", "Thurs", "Fri", "Sun"],
+    shift: "7am - 6pm"
+  }
 ];
-const nurseChosen = "Choon Hon Goh";
-const emailChosen = "jamgoh@cisco.com";
+const nurseChosen = "Emily Tan";
+const emailChosen = "triagenurse@ccepdemo.com";
 
 const classObj = {
   content: {

@@ -1,30 +1,36 @@
 import React from "react";
 
-const UIRosterCard = ({ name, num, active }) => {
-  const avail = num === 0;
-  const availClass = avail
-    ? "has-text-success has-text-weight-bold"
-    : "has-text-danger has-text-weight-bold";
-  const availText = avail ? "Available" : "Busy";
+const UIRosterCard = ({
+  name,
+  photo,
+  status,
+  title,
+  workdays,
+  shift,
+  active
+}) => {
+  const statusClass =
+    status === "Available"
+      ? "has-text-success has-text-weight-bold"
+      : "has-text-danger has-text-weight-bold";
   const boxClass = active ? "box flex has-background-warning" : "box flex";
   return (
     <div className={boxClass}>
       <article className="media" style={{ display: "flex" }}>
         <figure className="image is-64x64 flex mr-1">
-          <img
-            src="https://bulma.io/images/placeholders/128x128.png"
-            alt="Person"
-          />
+          <img src={photo} alt="Person" className="avatar-image" />
         </figure>
         <div className="media-content">
           <div className="content">
             <p>
-              <strong>{name}</strong> <small>Viewing {num} patients</small>{" "}
-              <small className={availClass} style={{ float: "right" }}>
-                {availText}
+              <strong>{name}</strong> <small>{title}</small>{" "}
+              <small className={statusClass} style={{ float: "right" }}>
+                {status}
               </small>
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Workdays: {workdays.join(", ")}
+              <br />
+              Shift: {shift}
             </p>
           </div>
         </div>

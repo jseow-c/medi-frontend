@@ -31,7 +31,11 @@ const ScreensRoot = () => {
     paymentStore: [, setPayment],
     statusStore: [, setStatus],
     timingStore: [, setTiming],
-    messageStore: [, setMessage]
+    messageStore: [, setMessage],
+    countryStore: [, setCountry],
+    reasonStore: [, setReason],
+    accidentStore: [, setAccident],
+    policeStore: [, setPolice]
   } = useContext(StoreContext);
 
   const [contentClass, setContentClass] = useState("content-container");
@@ -61,6 +65,10 @@ const ScreensRoot = () => {
         setStatus(demo.status);
         setTiming(demo.timing);
         setMessage(demo.message);
+        setAccident(demo.accident);
+        setPolice(demo.police);
+        setReason(demo.reason);
+        setCountry(demo.country);
         setContentClass("content-container with-webex");
         setLoading(false);
       };

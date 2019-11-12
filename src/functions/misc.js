@@ -28,7 +28,11 @@ export const cleanUser = async () => {
     payment: 0,
     status: false,
     timing: [],
-    message: []
+    message: [],
+    country: [],
+    reason: "",
+    accident: false,
+    police: false
   };
   await axios.post(setPatientUrl, patientData, options);
 };

@@ -7,15 +7,55 @@ import { StoreContext } from "../context";
 import axios from "axios";
 
 const doctors = [
-  { name: "Chun Kun", num: 1 },
-  { name: "Bill Gates", num: 0 },
-  { name: "Lily Ada", num: 1 },
-  { name: "Nicholas Chen", num: 0 },
-  { name: "Elon Musk", num: 0 }
+  {
+    name: "James Sze",
+    photo:
+      "https://pbs.twimg.com/profile_images/1119638274522267648/oT06seM-.png",
+    status: "Off-Shift",
+    title: "Medical Officer",
+    workdays: ["Mon", "Tue", "Wed", "Thurs", "Sun"],
+    shift: "3pm - 10pm"
+  },
+  {
+    name: "Nicholas Lim",
+    photo:
+      "https://pbs.twimg.com/profile_images/869994638110736385/CVYUarcq.jpg",
+    status: "Off-Shift",
+    title: "Consultant",
+    workdays: ["Tue", "Wed", "Thurs", "Sat", "Sun"],
+    shift: "3pm - 10pm"
+  },
+  {
+    name: "Rebecca Tok",
+    photo:
+      "https://m.media-amazon.com/images/M/MV5BMTM2NzI3NTU5Nl5BMl5BanBnXkFtZTcwODkxODAwNA@@._V1_UY256_CR9,0,172,256_AL_.jpg",
+    status: "Busy",
+    title: "Consultant",
+    workdays: ["Mon", "Tue", "Thurs", "Fri", "Sun"],
+    shift: "3pm - 10pm"
+  },
+  {
+    name: "Mohammed Bin Ayob",
+    photo:
+      "https://pbs.twimg.com/profile_images/946958436830285824/M21pui0V.jpg",
+    status: "Available",
+    title: "Medical Officer",
+    workdays: ["Tue", "Wed", "Fri", "Sat", "Sun"],
+    shift: "7am - 6pm"
+  },
+  {
+    name: "George Yacob",
+    photo: "https://i.imgur.com/RPAvHAM.jpg",
+    status: "Available",
+    title: "Senior Consultant",
+    workdays: ["Mon", "Tue", "Thurs", "Fri", "Sun"],
+    shift: "7am - 6pm"
+  }
 ];
-const doctorChosen = "Nicholas Chen";
-const emailChosen = "nichchen@cisco.com";
-const nurseEmail = "jamgoh@cisco.com";
+
+const doctorChosen = "Mohammed Bin Ayob";
+const emailChosen = "Attendingdoctor@ccepdemo.com";
+const nurseEmail = "triagenurse@ccepdemo.com";
 
 const classObj = {
   content: {

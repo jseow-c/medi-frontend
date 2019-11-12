@@ -26,7 +26,7 @@ const StepOneEnd = ({ facial, image }) => {
           name: facial.person_name
         };
         const response = await axios.post(url, postData, options);
-        const title = `MOH - ${response.data.name}`;
+        const title = `MOH - ${response.data.name} (${response.data.nric})`;
         const roomUrl = `${process.env.REACT_APP_SERVER_IP}/webex/room`;
         const roomData = { title };
         const roomRes = await axios.post(roomUrl, roomData, options);
@@ -53,7 +53,7 @@ const StepOneEnd = ({ facial, image }) => {
         setStep(1);
         setDemoStep(1);
 
-        sessionStorage.setItem("room", `MOH - ${response.data.name}`);
+        sessionStorage.setItem("room", title);
       };
       getPatientData(facial);
     }

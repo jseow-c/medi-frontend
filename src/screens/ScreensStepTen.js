@@ -6,7 +6,7 @@ import { StoreContext } from "../context";
 
 import axios from "axios";
 
-const emailChosen = "jeremyty@cisco.com";
+const emailChosen = "registrationcounter@ccepdemo.com";
 const medicine = [
   {
     name: "Bacitracin",

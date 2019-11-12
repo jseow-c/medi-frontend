@@ -11,7 +11,8 @@ const StepTwoVital = ({ temperature, pressure, heartrate, resrate }) => {
       <h1>Patient's Vital</h1>
       <article className="vital-card">
         <div className="vital-title">
-          <i className="fas fa-thermometer-half"></i> Temperature
+          <i className="vital-icon fas fa-thermometer-half has-text-info"></i>
+          <br /> Temperature
         </div>{" "}
         <div className={tempClass}>
           {temperature ? temperature : "Calculating..."}
@@ -19,7 +20,8 @@ const StepTwoVital = ({ temperature, pressure, heartrate, resrate }) => {
       </article>
       <article className="vital-card">
         <div className="vital-title">
-          <i className="fas fa-fist-raised"></i> Blood Pressure
+          <i className="vital-icon fas fa-fist-raised has-text-warning"></i>
+          <br /> Blood Pressure
         </div>{" "}
         <div className={pressureClass}>
           {pressure ? pressure : "Calculating..."}
@@ -27,7 +29,8 @@ const StepTwoVital = ({ temperature, pressure, heartrate, resrate }) => {
       </article>
       <article className="vital-card">
         <div className="vital-title">
-          <i className="fas fa-heartbeat"></i> Heart Rate
+          <i className="vital-icon fas fa-heartbeat has-text-danger"></i>
+          <br /> Heart Rate
         </div>{" "}
         <div className={heartClass}>
           {heartrate ? heartrate : "Calculating..."}
@@ -35,7 +38,8 @@ const StepTwoVital = ({ temperature, pressure, heartrate, resrate }) => {
       </article>
       <article className="vital-card">
         <div className="vital-title">
-          <i className="fas fa-wind"></i> Respiratory Rate
+          <i className="vital-icon fas fa-wind has-text-success"></i>
+          <br /> Respiratory Rate
         </div>{" "}
         <div className={resClass}>{resrate ? resrate : "Calculating..."}</div>
       </article>

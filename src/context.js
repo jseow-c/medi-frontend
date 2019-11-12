@@ -8,12 +8,16 @@ export default ({ children }) => {
   const [room, setRoom] = useState("");
   const [roomId, setRoomId] = useState("");
   const [name, setName] = useState("");
-  const [step, setStep] = useState(0);
   const [medicine, setMedicine] = useState([]);
   const [payment, setPayment] = useState(0);
   const [status, setStatus] = useState(false);
   const [timing, setTiming] = useState([]);
   const [message, setMessage] = useState([]);
+  const [step, setStep] = useState(0);
+  const [country, setCountry] = useState([]);
+  const [reason, setReason] = useState("");
+  const [accident, setAccident] = useState(false);
+  const [police, setPolice] = useState(false);
 
   const store = {
     loadingStore: [loading, setLoading],
@@ -26,7 +30,11 @@ export default ({ children }) => {
     paymentStore: [payment, setPayment],
     statusStore: [status, setStatus],
     timingStore: [timing, setTiming],
-    messageStore: [message, setMessage]
+    messageStore: [message, setMessage],
+    countryStore: [country, setCountry],
+    reasonStore: [reason, setReason],
+    accidentStore: [accident, setAccident],
+    policeStore: [police, setPolice]
   };
 
   return (
