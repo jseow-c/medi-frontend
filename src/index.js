@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./main.css";
+import "./sass/main.scss";
 import ScreensRoot from "./screens/ScreensRoot";
 // import UIWebex from "./components/UI/Webex";
 import * as serviceWorker from "./serviceWorker";

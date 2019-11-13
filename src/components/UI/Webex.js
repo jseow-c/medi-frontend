@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../../context";
 import SpaceWidget, { destinationTypes } from "@ciscospark/widget-space";
 // Sass import required to style widgets
-import "@ciscospark/widget-space/src/momentum.scss";
+// import "@ciscospark/widget-space/src/momentum.scss";
 
 const UIWebex = () => {
   const [display, setDisplay] = useState(false);

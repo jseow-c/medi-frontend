@@ -91,7 +91,11 @@ const ScreensRoot = () => {
     setPayment,
     setStatus,
     setTiming,
-    setMessage
+    setMessage,
+    setPolice,
+    setAccident,
+    setReason,
+    setCountry
   ]);
 
   // Ensure CSS for Container when there is Webex
