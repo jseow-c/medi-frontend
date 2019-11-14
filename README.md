@@ -1,5 +1,47 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installation and Startup
+
+1. Git Clone this package first.
+
+```bash
+git clone git@www-github.cisco.com:jseow/moh-demo.git
+```
+
+2. Go to the folder
+
+```bash
+cd /go/to/where/you/git/clone/path
+```
+
+3. Use the package manager [npm](https://nodejs.org/en/) to install MOH-Demo.
+
+```bash
+npm install
+```
+
+4. Copy a **.env** file from **.env.example**
+
+```bash
+cp .env.example .env
+```
+
+5. Copy content given separately to you
+
+> It can come either through a separate email or some message
+
+6. Build your UI Demo
+
+```bash
+npm run build
+```
+
+7. Start the server
+
+```bash
+node server.js
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
