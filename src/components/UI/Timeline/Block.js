@@ -1,9 +1,5 @@
 import React from "react";
-
-function parseISOString(s) {
-  var b = s.split(/\D+/);
-  return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
-}
+import { parseISOString } from "../../../functions/misc";
 
 const UITimelineBlock = ({ title, desc, firstStep, lastStep, timing }) => {
   const regex = /(\d+:\d+):(\d+)/;

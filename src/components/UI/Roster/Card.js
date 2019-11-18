@@ -7,7 +7,9 @@ const UIRosterCard = ({
   title,
   workdays,
   shift,
-  active
+  active,
+  clickable,
+  onClick
 }) => {
   const statusClass =
     status === "Available"
@@ -15,7 +17,11 @@ const UIRosterCard = ({
       : "has-text-danger has-text-weight-bold";
   const boxClass = active ? "box flex has-background-warning" : "box flex";
   return (
-    <div className={boxClass}>
+    <div
+      className={boxClass}
+      style={clickable && !active ? { cursor: "pointer" } : {}}
+      onClick={clickable && !active ? onClick : null}
+    >
       <article className="media" style={{ display: "flex" }}>
         <figure className="image is-64x64 flex mr-1">
           <img src={photo} alt="Person" className="avatar-image" />

@@ -61,6 +61,22 @@ export const setDemoStep = async step => {
   return infoRes.data;
 };
 
+export const formatDate = d => {
+  let month = "" + (d.getMonth() + 1);
+  let day = "" + d.getDate();
+  let year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+};
+
+export function parseISOString(s) {
+  var b = s.split(/\D+/);
+  return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+}
+
 export const PrivateRoute = ({ children, ...rest }) => {
   return (
     <Route

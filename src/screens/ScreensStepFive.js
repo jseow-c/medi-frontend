@@ -5,8 +5,8 @@ import { StoreContext } from "../context";
 
 const classObj = {
   content: {
-    hide: "step-two-content hide",
-    show: "step-two-content"
+    hide: "step-two-content",
+    show: "step-two-content show"
   },
   button: {
     hide: "button is-success is-light is-rounded next-button hide",
@@ -39,7 +39,7 @@ const ScreensStepFive = () => {
     <div className={contentClass}>
       <div className="generic-text-box h-250">
         <h1>@Bot Time</h1>
-        <p style={{ marginTop: 50 }}>
+        <p style={{ marginTop: 25 }}>
           Time to test using the bot! Let's try some commands to draw out the
           medical history.
         </p>
@@ -49,7 +49,7 @@ const ScreensStepFive = () => {
       </div>
       <i
         className="fas fa-robot has-text-grey"
-        style={{ fontSize: "25vmin", marginBottom: "5vmin" }}
+        style={{ fontSize: "20vmin", marginBottom: "5vmin" }}
       ></i>
       <button className={buttonClass} onClick={() => history.push("/step-6")}>
         Next

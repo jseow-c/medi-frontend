@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UITimeline from "../components/UI/Timeline/Timeline";
-import { setDemoStep } from "../functions/misc";
+import { setDemoStep, parseISOString } from "../functions/misc";
 import { StoreContext } from "../context";
 
 import axios from "axios";
@@ -41,8 +41,8 @@ const timeline = [
 
 const classObj = {
   content: {
-    hide: "step-two-content hide",
-    show: "step-two-content"
+    hide: "step-two-content",
+    show: "step-two-content show"
   },
   button: {
     hide: "button is-success is-light is-rounded next-button hide",
@@ -57,6 +57,7 @@ const ScreensStepEleven = () => {
     roomStore: [room]
   } = useContext(StoreContext);
   const [loading, setLoading] = useState(true);
+  const [duration, setDuration] = useState("");
   const execute = step < 11;
   const [contentClass, setContentClass] = useState(
     execute ? classObj.content.hide : classObj.content.show
@@ -79,15 +80,27 @@ const ScreensStepEleven = () => {
   }, [execute, setStep, setTiming, room]);
   useEffect(() => {
     if (timing.length > 10) {
+      const parsedFirst = parseISOString(timing[0]);
+      const parsedLast = parseISOString(timing[timing.length - 1]);
+      const totalTime = (parsedLast.getTime() - parsedFirst.getTime()) / 1000;
+
+      const durMins = Math.floor(totalTime / 60);
+      const durSecs = Math.round(totalTime % 60);
+      setDuration(`${durMins > 0 ? `${durMins}min ` : ""}${durSecs}sec`);
+    }
+  }, [timing]);
+  useEffect(() => {
+    if (duration) {
       setLoading(false);
       setContentClass(classObj.content.show);
       setButtonClass(classObj.button.show);
     }
-  }, [timing]);
+  }, [duration]);
   return (
     <div className={contentClass}>
-      <h1>Timeline</h1>
-      {!loading && <UITimeline timeline={timeline} timing={timing} />}
+      <h1>Time Spent in Hospital</h1>
+      {duration && <p>Total Time Spent: {duration}</p>}
+      {duration && <UITimeline timeline={timeline} timing={timing} />}
       <button className={buttonClass} onClick={() => history.push("/step-12")}>
         Next
       </button>

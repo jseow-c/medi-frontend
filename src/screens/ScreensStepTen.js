@@ -22,8 +22,8 @@ const medicine = [
 
 const classObj = {
   content: {
-    hide: "step-two-content hide",
-    show: "step-two-content"
+    hide: "step-two-content",
+    show: "step-two-content show"
   },
   button: {
     hide: "button is-success is-light is-rounded next-button hide",

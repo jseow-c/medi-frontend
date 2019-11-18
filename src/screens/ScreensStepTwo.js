@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UIRoster from "../components/UI/Roster/Roster";
-import { setDemoStep } from "../functions/misc";
+import { setDemoStep, formatDate } from "../functions/misc";
 import { StoreContext } from "../context";
 
 import axios from "axios";
+import UIProgress from "../components/UI/Progress";
+import UIModal from "../components/UI/Modal";
 
 const nurses = [
   {
@@ -54,8 +56,8 @@ const emailChosen = "triagenurse@ccepdemo.com";
 
 const classObj = {
   content: {
-    hide: "step-two-content hide",
-    show: "step-two-content"
+    hide: "step-two-content",
+    show: "step-two-content show"
   },
   button: {
     hide: "button is-success is-light is-rounded next-button hide",
@@ -75,34 +77,63 @@ const ScreensStepTwo = () => {
   const [buttonClass, setButtonClass] = useState(
     execute ? classObj.button.hide : classObj.button.show
   );
+  const [loading, setLoading] = useState(execute ? true : false);
+  const [modal, setModal] = useState(false);
   const [chosen, setChosen] = useState(execute ? null : nurseChosen);
   const history = useHistory();
-  useEffect(() => {
-    if (execute) {
-      const putInNurse = async () => {
-        const memberUrl = `${process.env.REACT_APP_SERVER_IP}/webex/membership`;
-        const options = { "Content-Type": "application/json" };
-        const memberData = {
-          title: room,
-          email: emailChosen
-        };
-        await axios.post(memberUrl, memberData, options);
-        setTimeout(() => {
-          setButtonClass(classObj.button.show);
-        }, 1000);
+
+  const clickNurse = () => {
+    const putInNurse = async () => {
+      const memberUrl = `${process.env.REACT_APP_SERVER_IP}/webex/membership`;
+      const options = { "Content-Type": "application/json" };
+      const memberData = {
+        title: room,
+        email: emailChosen
       };
-      setContentClass(classObj.content.show);
+      await axios.post(memberUrl, memberData, options);
       setTimeout(() => {
-        setChosen(nurseChosen);
-        putInNurse();
-      }, 2000);
-      setStep(2);
-      setDemoStep(2);
+        setModal(true);
+        setButtonClass(classObj.button.show);
+      }, 1000);
+    };
+    setTimeout(() => {
+      setChosen(nurseChosen);
+      putInNurse();
+    }, 500);
+    setStep(2);
+    setDemoStep(2);
+  };
+  useEffect(() => {
+    if (execute && !loading) {
+      setTimeout(() => setContentClass(classObj.content.show), 500);
     }
-  }, [execute, setStep, room]);
-  return (
+  }, [execute, loading]);
+  return loading ? (
+    <div className="step-two-loading" style={{ padding: "0 40px" }}>
+      <UIProgress
+        time={3000}
+        finishCB={() => setLoading(false)}
+        title="LOADING"
+        description={`Retrieving from Medical Roster for ${formatDate(
+          new Date()
+        )}...`}
+      />
+    </div>
+  ) : (
     <div className={contentClass}>
-      <UIRoster title="Nurse" people={nurses} chosen={chosen} />
+      <UIRoster
+        title="List of Triage Nurses On Duty"
+        people={nurses}
+        chosen={chosen}
+        defaultChosen={nurseChosen}
+        onClick={clickNurse}
+      />
+      <UIModal
+        show={modal}
+        title={nurseChosen}
+        description="is assigned for case."
+        bgClick={() => setModal(false)}
+      />
       <button className={buttonClass} onClick={() => history.push("/step-3")}>
         Next
       </button>

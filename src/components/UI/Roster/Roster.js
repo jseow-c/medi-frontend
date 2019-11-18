@@ -1,7 +1,7 @@
 import React from "react";
 import UIRosterCard from "./Card";
 
-const UIRoster = ({ title, people, chosen = null }) => {
+const UIRoster = ({ title, people, chosen = null, defaultChosen, onClick }) => {
   return (
     <div className="roster-card-list">
       <h1>{title} Roster</h1>
@@ -10,6 +10,8 @@ const UIRoster = ({ title, people, chosen = null }) => {
           key={person.name}
           {...person}
           active={person.name === chosen}
+          clickable={person.name === defaultChosen}
+          onClick={onClick}
         />
       ))}
     </div>

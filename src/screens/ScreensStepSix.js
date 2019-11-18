@@ -5,8 +5,8 @@ import { StoreContext } from "../context";
 
 const classObj = {
   content: {
-    hide: "step-two-content hide",
-    show: "step-two-content"
+    hide: "step-two-content",
+    show: "step-two-content show"
   },
   button: {
     hide: "button is-success is-light is-rounded next-button hide",
@@ -37,21 +37,22 @@ const ScreensStepSix = () => {
   }, [execute, setStep]);
   return (
     <div className={contentClass}>
-      <div className="generic-text-box h-250">
+      <div className="generic-text-box h-300">
         <h1>Take a picture of the injury using Webex!</h1>
-        <p style={{ marginTop: 50 }}>
-          We often find injuries that are visual such as cuts or wounds. We want
-          these evidences stored in an <b>persistance messaging system</b>.
+        <p style={{ marginTop: 25 }}>
+          The attending doctor can take a picture of the condition or injury for
+          archival or to share with Subject Matter Experts (SMEs) who can
+          collaborate to aid the diagnosis.
         </p>
         <p style={{ marginTop: 25 }}>
-          Take the photo using your handphone and it appears even here on the
-          web!
+          You may either take photo using your phone or upload a pre-stored
+          image of an injury.
         </p>
       </div>
 
       <i
         className="fas fa-camera-retro has-text-grey"
-        style={{ fontSize: "25vmin", marginBottom: "5vmin" }}
+        style={{ fontSize: "20vmin", marginBottom: "5vmin" }}
       ></i>
       <button className={buttonClass} onClick={() => history.push("/step-7")}>
         Next

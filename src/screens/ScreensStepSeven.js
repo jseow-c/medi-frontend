@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UIRoster from "../components/UI/Roster/Roster";
-import { setDemoStep } from "../functions/misc";
+import UIProgress from "../components/UI/Progress";
+import UIModal from "../components/UI/Modal";
+import { setDemoStep, formatDate } from "../functions/misc";
 import { StoreContext } from "../context";
 
 const doctors = [
@@ -39,8 +41,8 @@ const doctorChosen = "Goh Yong Kian";
 
 const classObj = {
   content: {
-    hide: "step-two-content hide",
-    show: "step-two-content"
+    hide: "step-two-content",
+    show: "step-two-content show"
   },
   button: {
     hide: "button is-success is-light is-rounded next-button hide",
@@ -50,8 +52,7 @@ const classObj = {
 
 const ScreensStepSeven = () => {
   const {
-    stepStore: [step, setStep],
-    roomStore: [room]
+    stepStore: [step, setStep]
   } = useContext(StoreContext);
   const execute = step < 7;
   const [contentClass, setContentClass] = useState(
@@ -60,31 +61,62 @@ const ScreensStepSeven = () => {
   const [buttonClass, setButtonClass] = useState(
     execute ? classObj.button.hide : classObj.button.show
   );
+  const [loading, setLoading] = useState(execute ? true : false);
+  const [modal, setModal] = useState(false);
   const [chosen, setChosen] = useState(execute ? null : doctorChosen);
   const history = useHistory();
+  const clickDoctor = () => {
+    setChosen(doctorChosen);
+    setTimeout(() => {
+      setModal(true);
+      setButtonClass("button is-success is-light is-rounded next-button");
+    }, 1000);
+    setStep(7);
+    setDemoStep(7);
+  };
   useEffect(() => {
-    if (execute) {
-      setContentClass("step-two-content");
-      setTimeout(() => {
-        setChosen(doctorChosen);
-        setTimeout(() => {
-          setButtonClass("button is-success is-light is-rounded next-button");
-        }, 1000);
-      }, 2000);
-      setStep(7);
-      setDemoStep(7);
+    if (execute && !loading) {
+      setTimeout(() => setContentClass(classObj.content.show), 500);
     }
-  }, [execute, setStep, room]);
-  return (
+  }, [execute, loading]);
+  return loading ? (
+    <div className="step-two-loading" style={{ padding: "0 40px" }}>
+      <UIProgress
+        time={3000}
+        finishCB={() => setLoading(false)}
+        title="LOADING"
+        description={`Retrieving from Medical Roster for ${formatDate(
+          new Date()
+        )}...`}
+      />
+    </div>
+  ) : (
     <div className={contentClass}>
-      <div className="generic-text-box h-150">
+      <div className="generic-text-box h-250">
         <h1>Add Doctor using Bot</h1>
+        <p style={{ marginTop: 25 }}>
+          Using Bots integrated with the Medical Duty Roster, Subject Matter
+          Experts can be invited into a consultation without needing the
+          Attending Doctor to manually search for the specialist on duty.
+        </p>
         <p style={{ margin: "25px 0" }}>
-          Type <i>@drstrange add doctor</i> to get another doctor into the
-          procedure.
+          This allows time to be saved, the consultation process to be more
+          efficient and streamlined and to enable a better patient experience.
         </p>
       </div>
-      <UIRoster title="Plastic Surgeons" people={doctors} chosen={chosen} />
+      <UIRoster
+        title="List of Plastic Surgeons On Duty"
+        people={doctors}
+        chosen={chosen}
+        defaultChosen={doctorChosen}
+        onClick={clickDoctor}
+      />
+      <UIModal
+        show={modal}
+        title={doctorChosen}
+        description="is assigned for case."
+        bgClick={() => setModal(false)}
+      />
       <button className={buttonClass} onClick={() => history.push("/step-8")}>
         Next
       </button>

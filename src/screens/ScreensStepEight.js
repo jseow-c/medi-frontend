@@ -5,8 +5,8 @@ import { StoreContext } from "../context";
 
 const classObj = {
   content: {
-    hide: "step-two-content hide",
-    show: "step-two-content"
+    hide: "step-two-content",
+    show: "step-two-content show"
   },
   button: {
     hide: "button is-success is-light is-rounded next-button hide",
@@ -38,8 +38,8 @@ const ScreensStepEight = () => {
   return (
     <div className={contentClass}>
       <div className="generic-text-box h-250">
-        <h1>Ask the Plastic Surgeon over Video!</h1>
-        <p style={{ marginTop: 50 }}>
+        <h1>Video Consultation with Subject Matter Expert (Plastic Surgeon)</h1>
+        <p style={{ marginTop: 25 }}>
           Often times, the injury is hard to determine simply via a photo. It
           might require a consultation to look at the injury to determine the
           cause and the remedy.
@@ -51,7 +51,7 @@ const ScreensStepEight = () => {
       </div>
       <i
         className="fas fa-video has-text-grey"
-        style={{ fontSize: "25vmin", marginBottom: "5vmin" }}
+        style={{ fontSize: "20vmin", marginBottom: "5vmin" }}
       ></i>
       <button className={buttonClass} onClick={() => history.push("/step-9")}>
         Next

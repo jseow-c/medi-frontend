@@ -30,7 +30,7 @@ const UICardPerson = ({ person, time, image }) => {
           Known Medical Conditions: {person.medical_conditions.join(",")} <br />
           Emergency Contact: {person.emergency_contact} <br />
           Relationship to Patient: {person.emergency_relation} <br />
-          Visit Reason: {person.visit_reason} <br />
+          Visit Reason: {person.reason} <br />
         </div>
       </div>
     </div>

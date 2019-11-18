@@ -17,6 +17,20 @@
     background: hsl(0, 0%, 66%);
   }
 }
+.ciscospark-content-container {
+  .ciscospark-activity-text {
+    h3 {
+      font-size: 1.25em;
+      font-weight: 600;
+    }
+  }
+}
+
+.md-avatar {
+  .md-avatar__img {
+    border-radius: 50%;
+  }
+}
 
 .ciscospark-controls-container {
   .md-button__container--small {

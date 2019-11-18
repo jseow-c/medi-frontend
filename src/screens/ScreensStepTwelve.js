@@ -9,8 +9,8 @@ import StepTwelveDestroy from "../components/StepTwelve/Destroy";
 
 const classObj = {
   content: {
-    hide: "step-two-content hide",
-    show: "step-two-content"
+    hide: "step-two-content",
+    show: "step-two-content show"
   },
   button: {
     hide: "button is-success is-light is-rounded next-button hide",
@@ -32,7 +32,7 @@ const ScreensStepTwelve = () => {
   );
   useEffect(() => {
     if (execute) {
-      setContentClass("step-two-content");
+      setContentClass(classObj.content.show);
     }
   }, [execute]);
   const bombClick = async () => {
