@@ -110,7 +110,7 @@ const ScreensRoot = () => {
     <div className="root-container">
       <UISidebar />
       <div className="main-container">
-        {/* <UIWebex /> */}
+        <UIWebex />
         <div className={contentClass}>
           <Switch>
             <Route exact path="/">
