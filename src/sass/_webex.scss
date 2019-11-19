@@ -32,6 +32,10 @@
   }
 }
 
+[class*="react-container-message-composer__mentions__highlighter"] {
+  top: 2px !important;
+}
+
 .ciscospark-controls-container {
   .md-button__container--small {
     display: flex;
