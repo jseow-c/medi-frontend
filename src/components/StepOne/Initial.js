@@ -8,7 +8,7 @@ import axios from "axios";
 import Select from "react-select";
 import { countryOptions } from "./options";
 
-const StepOneInitial = ({ onClick = null }) => {
+const StepOneInitial = ({ onClick = null, setImageType }) => {
   const {
     countryStore: [, setCountry],
     reasonStore: [, setReason],
@@ -19,6 +19,34 @@ const StepOneInitial = ({ onClick = null }) => {
   const [countryField, setCountryField] = useState([]);
   const [accidentField, setAccidentField] = useState(false);
   const [policeField, setPoliceField] = useState(false);
+  const setupData = async () => {
+    const url = `${process.env.REACT_APP_SERVER_IP}/demo/initial`;
+    const options = { "Content-Type": "application/json" };
+    setReason(reasonField);
+    setCountry(countryField);
+    setPolice(policeField);
+    setAccident(accidentField);
+    const postData = {
+      reason: reasonField,
+      country: countryField,
+      accident: accidentField,
+      police: policeField
+    };
+    await axios.post(url, postData, options);
+    onClick();
+  };
+  const normalClick = () => {
+    if (reasonField) {
+      setImageType("static");
+      setupData();
+    }
+  };
+  const merakiClick = () => {
+    if (reasonField) {
+      setImageType("meraki");
+      setupData();
+    }
+  };
   return (
     <main className="step-one-initial-container">
       <section className="hero is-medium step-one-initial">
@@ -53,27 +81,7 @@ const StepOneInitial = ({ onClick = null }) => {
           </header>
           <div className="card-content">
             <div className="content">
-              <form
-                onSubmit={async e => {
-                  e.preventDefault();
-                  if (reasonField) {
-                    const url = `${process.env.REACT_APP_SERVER_IP}/demo/initial`;
-                    const options = { "Content-Type": "application/json" };
-                    setReason(reasonField);
-                    setCountry(countryField);
-                    setPolice(policeField);
-                    setAccident(accidentField);
-                    const postData = {
-                      reason: reasonField,
-                      country: countryField,
-                      accident: accidentField,
-                      police: policeField
-                    };
-                    await axios.post(url, postData, options);
-                    onClick();
-                  }
-                }}
-              >
+              <div>
                 <div className="field" style={{ marginBottom: 10 }}>
                   <label className="label">Reason To Visit</label>
                   <div className="control">
@@ -146,11 +154,19 @@ const StepOneInitial = ({ onClick = null }) => {
                   </p>
                 </div>
                 <div className="control">
-                  <button className="button is-primary" type="submit">
-                    Submit
+                  <button
+                    className="button is-primary"
+                    type="submit"
+                    style={{ marginRight: 10 }}
+                    onClick={normalClick}
+                  >
+                    Use Static Image
+                  </button>
+                  <button className="button is-info" onClick={merakiClick}>
+                    Use Meraki Camera
                   </button>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

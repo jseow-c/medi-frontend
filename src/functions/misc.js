@@ -2,6 +2,12 @@ import axios from "axios";
 import { Route, Redirect } from "react-router-dom";
 import React from "react";
 
+export const sleep = ms => {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+};
+
 export const cleanRoom = async () => {
   const url = `${process.env.REACT_APP_SERVER_IP}/demo/room/clear/all`;
   await axios.post(url);

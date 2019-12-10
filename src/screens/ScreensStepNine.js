@@ -4,6 +4,8 @@ import UIMedicine from "../components/UI/Medicine/Medicine";
 import { setDemoStep } from "../functions/misc";
 import { StoreContext } from "../context";
 
+import axios from "axios";
+
 const medicine = [
   {
     name: "Bacitracin",
@@ -37,16 +39,34 @@ const ScreensStepNine = () => {
   const [contentClass, setContentClass] = useState(
     execute ? classObj.content.hide : classObj.content.show
   );
-  const [buttonClass, setButtonClass] = useState(
-    execute ? classObj.button.hide : classObj.button.show
+  const [buttonClass, setButtonClass] = useState(classObj.button.show);
+  const [buttonTextClass, setButtonTextClass] = useState(
+    execute ? "Issue Medicines" : "Next"
   );
   const history = useHistory();
+  const clickIssueMed = () => {
+    const runSteps = async () => {
+      // Step 1 - hide the issue button
+      setButtonClass(classObj.button.hide);
+      // Step 2 - Add Medicine
+      const url = `${process.env.REACT_APP_SERVER_IP}/demo/medicine`;
+      const options = { "Content-Type": "application/json" };
+      const data = { medicine: ["Neosporin", "Bacitracin"] };
+      await axios.post(url, data, options);
+
+      setTimeout(() => {
+        // setModal(true);
+        setButtonTextClass("Next");
+        setButtonClass(classObj.button.show);
+      }, 1000);
+    };
+    runSteps();
+    setStep(9);
+    setDemoStep(9);
+  };
   useEffect(() => {
     if (execute) {
       setContentClass(classObj.content.show);
-      setButtonClass("button is-success is-light is-rounded next-button");
-      setStep(9);
-      setDemoStep(9);
     }
   }, [execute, setStep, room]);
   return (
@@ -58,8 +78,15 @@ const ScreensStepNine = () => {
         </p>
       </div>
       <UIMedicine title="Issuing Medicine" medicine={medicine} />
-      <button className={buttonClass} onClick={() => history.push("/step-10")}>
-        Next
+      <button
+        className={buttonClass}
+        onClick={() => {
+          if (buttonTextClass === "Next") history.push("/step-10");
+          else clickIssueMed();
+        }}
+        style={buttonTextClass === "Next" ? {} : { width: 200 }}
+      >
+        {buttonTextClass}
       </button>
     </div>
   );

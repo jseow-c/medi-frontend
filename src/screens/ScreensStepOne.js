@@ -9,6 +9,7 @@ const ScreensStepOne = () => {
   const [stage, setStage] = useState(0);
   const [image, setImage] = useState("");
   const [facial, setFacial] = useState({});
+  const [imageType, setImageType] = useState("static");
 
   switch (stage) {
     case 3:
@@ -22,11 +23,23 @@ const ScreensStepOne = () => {
         />
       );
     case 1:
-      return <StepOneSnap setImage={setImage} setStage={setStage} />;
+      return (
+        <StepOneSnap
+          image={image}
+          setImage={setImage}
+          setStage={setStage}
+          imageType={imageType}
+        />
+      );
 
     default:
     case 0:
-      return <StepOneInitial onClick={() => setStage(1)} />;
+      return (
+        <StepOneInitial
+          onClick={() => setStage(1)}
+          setImageType={setImageType}
+        />
+      );
   }
 };
 

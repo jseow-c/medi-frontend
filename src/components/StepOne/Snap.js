@@ -2,21 +2,35 @@ import React, { useEffect } from "react";
 import UILoading from "../UI/Loading";
 import { setDemoStep } from "../../functions/misc";
 
-const StepOneSnap = ({ setStage, setImage }) => {
+import axios from "axios";
+
+const StepOneSnap = ({ setStage, setImage, imageType = "static", image }) => {
   useEffect(() => {
-    setTimeout(() => {
-      setImage("https://images.wsj.net/im-117184?width=620&size=1.5");
-      setStage(2);
-    }, 3000);
+    const snapMeraki = async (setUrl, cb = null) => {
+      const url = `${process.env.REACT_APP_SERVER_IP}/meraki/snap`;
+      const options = { "Content-Type": "application/json" };
+      const postData = {};
+      const response = await axios.post(url, postData, options);
+
+      const responseJson = await response.data;
+      setUrl(responseJson);
+      setTimeout(() => cb(), 2000);
+    };
     setDemoStep(0);
-  }, [setStage, setImage]);
+    if (imageType === "static") {
+      setTimeout(() => {
+        setImage(
+          `${process.env.REACT_APP_SERVER_IP}/images/sample_meraki_ch.jpg`
+        );
+        setStage(2);
+      }, 3000);
+    } else {
+      snapMeraki(setImage, () => setStage(2));
+    }
+  }, [setStage, setImage, imageType]);
   return (
     <div className="step-one-loader">
-      <img
-        src="https://images.wsj.net/im-117184?width=620&size=1.5"
-        alt="Person"
-        style={{ display: "none" }}
-      />
+      <img src={image} alt="Person" style={{ display: "none" }} />
       <UILoading title="Meraki" desc="Meraki getting Face Image now" size={1} />
     </div>
   );

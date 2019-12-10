@@ -112,7 +112,7 @@ const ScreensStepFour = () => {
       setTimeout(() => {
         setModal(true);
         //  Step 5 - Show Button
-        setButtonClass("button is-success is-light is-rounded next-button");
+        setButtonClass(classObj.button.show);
       }, 1000);
     };
     runSteps();
